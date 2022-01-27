@@ -1,11 +1,11 @@
-
+import * as S from './styled';
 
 const Layout = ({ children }) => {
     return (
-        <section>
-            <header></header>
+        <S.WrapperLayout>
+            <header>header</header>
             { children }
-        </section>
+        </S.WrapperLayout>
     );
 }
 

@@ -1,30 +1,14 @@
-import Layout from '.components/Layout';
+import Layout from './components/layout';
+import Profile from './components/profile';
+import { ResetCSS } from './components/global/resetCSS';
 
 
 const App = () => {
   return (
     <main>
+      <ResetCSS />
       <Layout>
-        <div>
-          <img source="" alt="Pictures of user" />
-          <h1>Dgley Ramos</h1>
-          <h3>User.name: </h3>
-          <span>benits</span>
-          <div>
-            <div>
-              <h4>Followers</h4>
-              <span>5</span>
-            </div>
-            <div>
-              <h4>Starreds</h4>
-              <span>5</span>
-            </div>
-            <div>
-              <h4>Followings</h4>
-              <span>5</span>
-            </div>
-          </div>
-        </div>
+        <Profile />
         <div>Repositories</div>
         <div>Starreds</div>
       </Layout>
