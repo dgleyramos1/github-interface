@@ -1,12 +1,17 @@
 import * as S from './styled';
+import useGithub from '../../hooks/gihub-hooks'
 
 const Profile = () => {
+
+
+    const { githubState } = useGithub();
+
     return (
         <S.Wrapper>
           <S.WrapperImage src="" alt="Pictures of user" />
           <S.WrapperInfoUser>
           <div>
-            <h1>Dgley Ramos</h1>
+            <h1>{ githubState.user.name }</h1>
             <S.WrapperUsername>
                 <h3>User.name: </h3>
                 <a
