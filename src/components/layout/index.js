@@ -1,9 +1,10 @@
+import Header from '../header';
 import * as S from './styled';
 
 const Layout = ({ children }) => {
     return (
         <S.WrapperLayout>
-            <header>header</header>
+            <Header />
             { children }
         </S.WrapperLayout>
     );
