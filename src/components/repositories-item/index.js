@@ -1,9 +1,9 @@
-import Repositories from "../repositories";
+import * as S from "./styled";
 
 
 const RepositoryItem = ({ name, linkToRepo, fullName }) => {
     return (
-        <div>
+        <S.Wrapper>
             <h2>{name}</h2>
             <h4>Full Name: </h4>
             <a
@@ -13,7 +13,7 @@ const RepositoryItem = ({ name, linkToRepo, fullName }) => {
             >
                 { fullName }
             </a>
-        </div>
+        </S.Wrapper>
     );
 }
 

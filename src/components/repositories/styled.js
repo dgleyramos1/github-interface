@@ -2,21 +2,21 @@ import styled from "styled-components";
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 
 
-export const wrapperTabs = styled(Tabs)`
+export const WrapperTabs = styled(Tabs)`
  font-size: 16px;
  width: 100%;
  margin-top: 16px;
 `;
 
-export const wrapperTabList = styled(TabList)`
+export const WrapperTabList = styled(TabList)`
     list-style-type: none;
     padding: 4px;
     display: flex;
     margin: 0;
 `;
-wrapperTabList.tabsRole = "TabList";
+WrapperTabList.tabsRole = "TabList";
 
-export const wrapperTab = styled(Tab)`
+export const WrapperTab = styled(Tab)`
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     border-bottom-left-radius: 0;
@@ -36,10 +36,10 @@ export const wrapperTab = styled(Tab)`
         border-bottom: 1px solid white; 
     }
 `;
-wrapperTab.tabsRole = "Tab";
+WrapperTab.tabsRole = "Tab";
 
 
-export const wrapperTabPanel = styled(TabPanel)`
+export const WrapperTabPanel = styled(TabPanel)`
     padding: 16px;
     border: 1px solid #ccc;
     display: none;
@@ -51,4 +51,10 @@ export const wrapperTabPanel = styled(TabPanel)`
     }
 `;
 
-wrapperTabPanel.tabsRole = "TabPanel";
+WrapperTabPanel.tabsRole = "TabPanel";
+
+export const WrapperList = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+`;

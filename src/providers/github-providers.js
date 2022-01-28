@@ -16,6 +16,7 @@ const GithubProvider = ({ children }) => {
         hasUser: false,
         loading: false,
         user: {
+            id: undefined,
             avatar: undefined,
             login: undefined,
             name: undefined,
@@ -68,9 +69,33 @@ const GithubProvider = ({ children }) => {
       });
     };
 
+    const getUserRepos = (uersname) => {  
+      api
+        .get(`users/${uersname}/repos`)
+        .then(({ data }) => {
+          setGithubState((prevState) => ({
+            ...prevState,
+            repositories: data,
+          }));
+        })
+      };
+
+    const getUserStarred = (uersname) => {  
+      api
+        .get(`users/${uersname}/starred`)
+        .then(({ data }) => {
+          setGithubState((prevState) => ({
+            ...prevState,
+            starred: data,
+          }));
+      })
+    };
+  
     const contextValue = {
         githubState,
         getUser: useCallback((username) => getUser(username), []),
+        getUserRepos: useCallback((uersname) => getUserRepos(uersname), []),
+        getUserStarred: useCallback((uersname) => getUserStarred(uersname), []),
     }
 
     return (
