@@ -1,4 +1,5 @@
 import Layout from './components/layout';
+import NoSerach from './components/no-search';
 import Profile from './components/profile';
 import Repositories from './components/repositories';
 import useGithub from './hooks/gihub-hooks';
@@ -21,7 +22,7 @@ const App = () => {
               )}
               </>
             ) : (
-              <div>Nenhum usúario pequisado!</div>
+              <NoSerach />
             )}
           
         </Layout>
