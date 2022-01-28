@@ -1,21 +1,30 @@
 import Layout from './components/layout';
 import Profile from './components/profile';
-import { ResetCSS } from './components/global/resetCSS';
 import Repositories from './components/repositories';
-import GithubProvider from './providers/github-providers';
+import useGithub from './hooks/gihub-hooks';
 
 
 const App = () => {
+  const { githubState } = useGithub();
+
   return (
-    <main>
-      <GithubProvider>
-        <ResetCSS />
         <Layout>
-          <Profile />
-          <Repositories />
+            {githubState.hasUser ? (
+              <>
+              {githubState.loading ? (
+                <p>Loading...</p>
+              ) : (
+                <>
+                  <Profile />
+                  <Repositories />
+                </>
+              )}
+              </>
+            ) : (
+              <div>Nenhum usúario pequisado!</div>
+            )}
+          
         </Layout>
-      </GithubProvider>
-    </main>
   );
 }
 

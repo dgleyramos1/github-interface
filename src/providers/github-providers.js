@@ -13,8 +13,10 @@ export const GithubContext = createContext({
 
 const GithubProvider = ({ children }) => {
     const [ githubState, setGithubState ] = useState({
+        hasUser: false,
         loading: false,
         user: {
+            avatar: undefined,
             login: undefined,
             name: undefined,
             html_url: undefined,
@@ -30,24 +32,35 @@ const GithubProvider = ({ children }) => {
         starred: [],
     });
 
-    const getUSer = ( username ) => {
-        api.get(`users/${username}`).then( ({ data: { user } } ) => {
+    const getUSer = ( username ) =>{
+        setGithubState((prevState) => ({
+            ...prevState,
+            loading: !prevState.loading
+        }));
+        api.get(`users/${username}`).then( ( { data } ) => {
             setGithubState((prevState) => ({
                 ...prevState,
+                hasUser: true,
                 user:{
-                    login: user.login,
-                    name: user.login,
-                    html_url: user.login,
-                    blog: user.login,
-                    company: user.login,
-                    location: user.login,
-                    followers: user.login,
-                    following: user.login,
-                    public_gists: user.login,
-                    public_repos: user.login,
+                    avatar: data.avatar_url,
+                    login: data.login,
+                    name: data.name,
+                    html_url: data.html_url,
+                    blog: data.blog,
+                    company: data.company,
+                    location: data.location,
+                    followers: data.followers,
+                    following: data.following,
+                    public_gists: data.public_gists,
+                    public_repos: data.public_repos
                 },
             }))
-        });
+        }).finally(() =>{
+            setGithubState((prevState) => ({
+                ...prevState,
+                loading: !prevState.loading
+            }))
+        })
     };
 
     const contextValue = {

@@ -6,10 +6,11 @@ import { useState } from 'react';
 const Header = () => {
     const { getUser } = useGithub();
     const [usernameForSearch, setUsernameForSearch] = useState();
-    const submitGetUser = (username) => {
+
+    const submitGetUser = () => {
         if(!usernameForSearch) return;
         return getUser(usernameForSearch);
-    } 
+    } ;
 
 
     return (
@@ -18,10 +19,11 @@ const Header = () => {
                 <input
                     type="text"
                     placeholder='Digite o username para pesquisar...'
-                    onChange={submitGetUser}
+                    onChange={(event) => setUsernameForSearch(event.target.value)}
                 />
                 <button
                     type="submit"
+                    onClick={submitGetUser}
                 >
                     <span>
                         Buscar

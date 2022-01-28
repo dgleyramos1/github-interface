@@ -1,18 +1,19 @@
 import * as S from './styled';
-import useGithub from '../../hooks/gihub-hooks'
+import useGithub from '../../hooks/gihub-hooks';
 
 const Profile = () => {
 
 
     const { githubState } = useGithub();
 
+
     return (
         <S.Wrapper>
-          <S.WrapperImage src="" alt="Pictures of user" />
+          <S.WrapperImage src={githubState.user.avatar} alt="Pictures of user" />
           <S.WrapperInfoUser>
           <div>
-            <h1>{ githubState.user.name }</h1>
-            <S.WrapperUsername>
+            <h1>{githubState.user.name}</h1>
+            <S.WrapperUserGeneric>
                 <h3>User.name: </h3>
                 <a
                     href={ githubState.user.html_url }
@@ -21,7 +22,29 @@ const Profile = () => {
                 >
                     { githubState.user.login }
                 </a>
-            </S.WrapperUsername>
+            </S.WrapperUserGeneric>
+            <S.WrapperUserGeneric>
+                <h3>company: </h3>
+                <span>
+                    { githubState.user.company }
+                </span>
+            </S.WrapperUserGeneric>
+            <S.WrapperUserGeneric>
+                <h3>Location: </h3>
+                <span>
+                    { githubState.user.location }
+                </span>
+            </S.WrapperUserGeneric>
+            <S.WrapperUserGeneric>
+                <h3>Blog: </h3>
+                <a
+                    href={ githubState.user.blog }
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    { githubState.user.blog }
+                </a>
+            </S.WrapperUserGeneric>
           </div>
           <S.WrapperStatusCount>
             <div>
