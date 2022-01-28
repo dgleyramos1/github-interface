@@ -8,9 +8,9 @@ const Header = () => {
     const [usernameForSearch, setUsernameForSearch] = useState();
 
     const submitGetUser = () => {
-        if(!usernameForSearch) return;
+        if(!usernameForSearch)return;
         return getUser(usernameForSearch);
-    } ;
+    };
 
 
     return (

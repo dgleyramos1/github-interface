@@ -32,40 +32,45 @@ const GithubProvider = ({ children }) => {
         starred: [],
     });
 
-    const getUSer = ( username ) =>{
+    const getUser = (username) => {
+    setGithubState((prevState) => ({
+      ...prevState,
+      loading: !prevState.loading,
+    }));
+
+    api
+      .get(`users/${username}`)
+      .then(({ data }) => {
         setGithubState((prevState) => ({
-            ...prevState,
-            loading: !prevState.loading
+          ...prevState,
+          hasUser: true,
+          user: {
+            id: data.id,
+            avatar: data.avatar_url,
+            login: data.login,
+            name: data.name,
+            html_url: data.html_url,
+            blog: data.blog,
+            company: data.company,
+            location: data.location,
+            followers: data.followers,
+            following: data.following,
+            public_gists: data.public_gists,
+            public_repos: data.public_repos,
+          },
         }));
-        api.get(`users/${username}`).then( ( { data } ) => {
-            setGithubState((prevState) => ({
-                ...prevState,
-                hasUser: true,
-                user:{
-                    avatar: data.avatar_url,
-                    login: data.login,
-                    name: data.name,
-                    html_url: data.html_url,
-                    blog: data.blog,
-                    company: data.company,
-                    location: data.location,
-                    followers: data.followers,
-                    following: data.following,
-                    public_gists: data.public_gists,
-                    public_repos: data.public_repos
-                },
-            }))
-        }).finally(() =>{
-            setGithubState((prevState) => ({
-                ...prevState,
-                loading: !prevState.loading
-            }))
-        })
+      })
+      .finally(() => {
+        setGithubState((prevState) => ({
+          ...prevState,
+          loading: !prevState.loading,
+        }));
+      });
     };
 
     const contextValue = {
         githubState,
-        getUSer: useCallback((username) => getUSer(username), []),
+        getUser: useCallback((username) => getUser(username), []),
     }
 
     return (
