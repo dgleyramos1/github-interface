@@ -15,7 +15,7 @@ const Header = () => {
 
     return (
         <header>
-            <S.wrapper>
+            <S.Wrapper>
                 <input
                     type="text"
                     placeholder='Digite o username para pesquisar...'
@@ -29,7 +29,7 @@ const Header = () => {
                         Buscar
                     </span>                    
                 </button>
-            </S.wrapper>
+            </S.Wrapper>
         </header>
     )
 }

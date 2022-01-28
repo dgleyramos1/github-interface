@@ -1,8 +1,19 @@
 import styled from "styled-components";
 
+
+
 export const Wrapper = styled.div`
     display: flex;
     align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 24px;
+
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
 `;
 
 export const WrapperInfoUser = styled.div`
@@ -32,6 +43,9 @@ export const WrapperStatusCount = styled.div`
     div{
         margin: 8px;
         text-align: center;
+    }
+    @media (max-width: 600px) {
+        width: 100%;
     }
 `;
 

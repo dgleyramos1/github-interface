@@ -18,7 +18,7 @@ const Repositories = () => {
     }, [githubState.user.login]);
 
     return (
-        <>  
+        <S.Wrapper>  
             {hasUserForSearchRepos ? 
                 <S.WrapperTabs
                     selectedTabClassName="is-selected"
@@ -56,7 +56,7 @@ const Repositories = () => {
 
                 </S.WrapperTabs>
             : <></> }
-        </>
+        </S.Wrapper>
     );
 }
 
